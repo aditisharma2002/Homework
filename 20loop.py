@@ -2,6 +2,8 @@
 
 # Aditi Sharma
 # January 31 2023
+# MCB 183-2023
+
 # Print out the numbers from 5 to less than 50 in steps of 7
 
 # Hint: use the 3 argument form of range()
