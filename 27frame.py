@@ -8,6 +8,11 @@
 
 dna = 'ATGGCCTTT'
 
+for frame in range(3):
+	for i in range(frame, len(dna), 3):
+		position = i
+		letter = dna[i]
+		print(position, frame, letter)
 
 """
 python3 27frame.py
