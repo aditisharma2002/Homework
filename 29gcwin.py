@@ -14,6 +14,21 @@
 seq = 'ACGACGCAGGAGGAGAGTTTCAGAGATCACGAATACATCCATATTACCCAGAGAGAG'
 w = 11
 
+for i in range(len(window)):
+	if window(i) == 'G' or window(i) == 'C':
+			sumGC += 1
+print(0, window, round(sumGC/w, 4))
+
+for i in range(len(seq) -w + 1):
+	if window[0] == 'G' or window[0] == 'C':
+		sumGC = sumGC -1
+	window = window[1:]
+	window += seq[i+w-1]
+	if seq[i+w-1] == 'G' or seq[i+w-1] == 'C':
+		sunGC += 1
+	print(i+1, window, round(sumGC/w,4))
+
+
 
 """
 python3 26gcwin.py
