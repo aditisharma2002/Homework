@@ -5,6 +5,22 @@
 # Skip AA, CC etc.
 # Also print out how many combinations there are
 
+aa = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
+comb = []
+
+for i in range(len(aa)):
+	for j in range(i+1, len(aa)):
+		comb.append(aa[i] + aa[j])
+		comb.append(aa[j] + aa[i])
+
+unique_comb = set(comb)
+
+print("Unique pairwise amino acid combinations:")
+for comb in unique_comb:
+    print(comb)
+
+print("\nNumber of combinations: ", len(unique_comb))
+
 # Hint: if you get stuck for more than 10 minutes, get help
 
 

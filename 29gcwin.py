@@ -14,19 +14,36 @@
 seq = 'ACGACGCAGGAGGAGAGTTTCAGAGATCACGAATACATCCATATTACCCAGAGAGAG'
 w = 11
 
-for i in range(len(window)):
-	if window(i) == 'G' or window(i) == 'C':
-			sumGC += 1
-print(0, window, round(sumGC/w, 4))
+gc = 0
 
-for i in range(len(seq) -w + 1):
-	if window[0] == 'G' or window[0] == 'C':
-		sumGC = sumGC -1
-	window = window[1:]
-	window += seq[i+w-1]
-	if seq[i+w-1] == 'G' or seq[i+w-1] == 'C':
-		sunGC += 1
-	print(i+1, window, round(sumGC/w,4))
+for i in range(w):
+	if seq[i] == 'C' or seq[i] == 'G':
+		gc += 1
+		
+print(0, seq[:w], round(gc/w, 4))
+
+lost = seq[0]
+
+for i in range(1, len(seq) - w + 1):
+	gained = seq[i+w-1]
+	
+	if gained == 'C' or gained == 'G':
+		gc += 1
+	if lost == 'C' or lost == 'G':
+		gc -= 1
+		
+	print(0, seq[i:i+w], round(gc/w, 4))
+	lost = seq[i]
+	
+#for i in range(len(seq) - w + 1):
+#	dna = seq[i:i+w]
+#	gc = 0
+#	for nt in dna:
+#		if nt == 'G' or nt == 'C':
+#			gc += 1
+#	print(i, dna, gc)
+
+
 
 
 

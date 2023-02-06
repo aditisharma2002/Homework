@@ -5,8 +5,10 @@
 
 # Variation: try this with the range() function and slice syntax
 
+
 def reverse(dna):
-	sequence = " "
+	dna = 'ACTGAAAAAAAAAAA'
+	sequence = "ACTGAAAAAAAAAAA"
 	for nt in dna: 
 		if nt == 'A' :
 			sequence = 'T' + sequence
@@ -18,8 +20,8 @@ def reverse(dna):
 			sequence = 'G' + sequence
 	return sequence	
 
+print(reverse(sequence))
 
-dna = 'ACTGAAAAAAAAAAA'
 
 
 """
