@@ -5,7 +5,7 @@
 # Hint: use the 3 argument form of range()
 
 # Your code goes here
-
+# we want to get from 5-50 in steps of 7
 for i in range (5, 50, 7):
 		print (i)
 
