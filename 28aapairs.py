@@ -5,15 +5,6 @@
 # Skip AA, CC etc.
 # Also print out how many combinations there are
 
-aa = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
-n = 0
-# in order to print all the unique amino acide:
-for i in range(0, len(aa)):
-	for x in range(i + 1, len(aa)):
-		n = n + 1
-		print(aa[i], aa[x])
-		
-print(n)
 # Hint: if you get stuck for more than 10 minutes, get help
 
 

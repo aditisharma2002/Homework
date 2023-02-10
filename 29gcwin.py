@@ -14,38 +14,6 @@
 seq = 'ACGACGCAGGAGGAGAGTTTCAGAGATCACGAATACATCCATATTACCCAGAGAGAG'
 w = 11
 
-gc = 0
-
-for i in range(w):
-	if seq[i] == 'C' or seq[i] == 'G':
-		gc += 1
-		
-print(0, seq[:w], round(gc/w, 4))
-
-lost = seq[0]
-
-for i in range(1, len(seq) - w + 1):
-	gained = seq[i+w-1]
-	
-	if gained == 'C' or gained == 'G':
-		gc += 1
-	if lost == 'C' or lost == 'G':
-		gc -= 1
-		
-	print(0, seq[i:i+w], round(gc/w, 4))
-	lost = seq[i]
-	
-#for i in range(len(seq) - w + 1):
-#	dna = seq[i:i+w]
-#	gc = 0
-#	for nt in dna:
-#		if nt == 'G' or nt == 'C':
-#			gc += 1
-#	print(i, dna, gc)
-
-
-
-
 
 """
 python3 26gcwin.py
