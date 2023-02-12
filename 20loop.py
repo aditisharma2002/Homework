@@ -6,6 +6,10 @@
 
 # Your code goes here
 
+#we use a loop here and we give all the information in one for statement. 
+for i in range(5, 50, 7):    #Here we are saying for integer in the range of 5-50 print it out in steps of 7
+	print(i)
+	
 """
 python3 20loop.py
 5
