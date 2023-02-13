@@ -5,6 +5,34 @@
 # Skip AA, CC etc.
 # Also print out how many combinations there are
 
+# define the variables first
+aa = 'ACDEFGHIKLMNPQRSTVWY'
+
+#for i in aa:
+#	for s in aa:
+#		print(i,s)
+# this printed all of the possible aa combinations including the repeats which we don't want.
+
+for i in range(0, len(aa)):
+	for s in range(i, len(aa)):
+		print(i,s)
+
+
+
+
+
+
+
+
+
+n = 0
+# in order to print all the unique amino acids and gives how many combinations there are
+for i in range(0, len(aa)):
+	for x in range(i + 1, len(aa)):
+		n = n + 1
+		print(aa[i], aa[x])
+		
+print(n)
 # Hint: if you get stuck for more than 10 minutes, get help
 
 

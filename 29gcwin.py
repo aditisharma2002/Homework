@@ -13,6 +13,28 @@
 
 seq = 'ACGACGCAGGAGGAGAGTTTCAGAGATCACGAATACATCCATATTACCCAGAGAGAG'
 w = 11
+for i in range(len(seq) -w +1):
+	count = i
+	gc = 0
+	window = seq[i:i+w]
+	for BP in window:
+		if BP == 'G' or 'C':
+			gc = gc + 1
+	print(f'{count} {window} {gc/len(window)}:.2f]')
+	
+#no nested loop
+#for i in range(len(seq) -w +1):
+#	count = 1
+#	gc = 0
+##	if i =='G' or i == 'C':
+#		gc = gc + 1
+#duno what to do now
+
+	
+
+
+
+
 
 
 """

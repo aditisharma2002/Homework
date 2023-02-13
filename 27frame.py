@@ -8,7 +8,17 @@
 
 dna = 'ATGGCCTTT'
 
+#normal loop
+for i in range(len(dna)):
+	print(i, i%3, dna[i])
+#basically prints the number from 0-8, then the remainder and then the sequence
 
+#nested loop
+for i in range(0, len(dna), 3):
+	for s in range(3):
+		n = i + s
+		print(n, s, dna[n])	
+	
 """
 python3 27frame.py
 0 0 A

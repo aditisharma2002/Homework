@@ -15,7 +15,8 @@ for i in range(1,101): # we use 101 because we are starting from 1
 		print("Buzz")
 	else:
 		print(i)
-
+# here i did the and statement first and then the other statements. 
+# the i%3 == 0 is basically saying if the remainder is 0 for the number divisible by 3 then write ""
 """
 python3 23fizzbuzz.py
 1
