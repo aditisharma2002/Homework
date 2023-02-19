@@ -10,6 +10,31 @@
 # Variation: use a list
 
 
+import sys
+import gzip
+
+AA = 'ACDEFGHIKLMNOPQRSTUVWY'
+comp_AA = [0] * len(AA)
+total = 0
+
+for line in fp.readlines():
+	id = word[0]
+	words = line.split()
+	print(id[1:], end='')
+	
+	words = line.split()
+	print(words[0][1:]) 
+with gzip.open(sys.argv[1], 'rt') as fp:
+	for line in fp.readlines():
+		line = line.rstrip()
+		if line.startswith('>'): continue
+		total += len(line)
+		for i in range(len(AA)):
+			A = AA[i]
+			comp_AA[i] += line.count(A)
+			
+print(comp_AA)
+
 """
 python3 40aacomp.py ~/DATA/E.coli/GCF_000005845.2_ASM584v2_protein.faa.gz
 A 126893 0.0954
