@@ -29,16 +29,16 @@ print("Mean:", sum(nums)/len(nums))
 if length % 2 ==0:
 	median = length//2
 else:
-print('Median:', length//2)
+	print('Median:', length//2)
 
 
-#mean = sum(nums)/len(nums)
+mean = sum(nums)/len(nums)
 #print("Mean:", f'{mean:.3f}')
 
-sum = 0
-for num in nums 
-	sum += (val - mean) ** 2
-variance = sum / len(nums)
+total = 0
+for num in nums:
+	total += (num - mean) ** 2
+variance = total / len(nums)
 std_dev = variance ** 0.5
 
 print("Std_dev:", f'{std_dev:.3f}')
