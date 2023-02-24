@@ -12,28 +12,57 @@
 
 import sys
 import gzip
-
-AA = 'ACDEFGHIKLMNOPQRSTUVWY'
+ # start by defining the variables first
+AA = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
 comp_AA = [0] * len(AA)
 total = 0
 
-for line in fp.readlines():
-	id = word[0]
-	words = line.split()
-	print(id[1:], end='')
-	
-	words = line.split()
-	print(words[0][1:]) 
 with gzip.open(sys.argv[1], 'rt') as fp:
-	for line in fp.readlines():
-		line = line.rstrip()
-		if line.startswith('>'): continue
-		total += len(line)
-		for i in range(len(AA)):
-			A = AA[i]
-			comp_AA[i] += line.count(A)
+	for line in fp.readlline():
+		line = line.rstrip() # this is saying to strip the characters in newline
+		if line.startswith('>'):
+			continue 
 			
-print(comp_AA)
+		for i in range(len(AA)):
+			a = AA[i]
+			comp_AA[i] += line.count(a)
+
+total = sum(comp_AA) # this gives us a list of the amino acids numbers with a probability amount.
+
+for x in range(len(AA)):
+	prob=comp_AA[x]/total
+	print(AA[x], comp_AA[x], f'{prob:.3}')
+
+# this does it by regit moving the white spaces and the C but doesnt give the full answer that we need
+#with gzip.open(sys.argv[1], 'rt') as fp:
+#	for line in fp.readlines():
+#		line = line.rstrip()
+#		if line.startswith('>'): continue
+#		total += len(line)
+#		for i in range(len(AA)):
+#			A = AA[i]
+#			comp_AA[i] += line.count(A)
+			
+#print(comp_AA)
+
+
+
+
+
+
+
+
+
+
+#gives the name and id
+
+#for line in fp.readlines():
+#	id = word[0]
+#	words = line.split()
+#	print(id[1:], end='')
+#	
+#	words = line.split()
+#	print(words[0][1:]) 
 
 """
 python3 40aacomp.py ~/DATA/E.coli/GCF_000005845.2_ASM584v2_protein.faa.gz
