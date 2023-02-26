@@ -18,6 +18,7 @@
 import sys
 import math
 import mcb185
+import argparse #using parse makes the code more executable
 
 file = sys.argc[1]
 window = int(sys.argv[2])
@@ -46,6 +47,7 @@ for thing, seq in MCB185.read.fasta(sys.argv[1]):
 		e = seq_entropy(w)	
 	seq =''.join(seqX)
 	print(seq)
+
 
 
 """
