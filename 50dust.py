@@ -19,34 +19,50 @@ import sys
 import math
 import mcb185
 import argparse #using parse makes the code more executable
+import random
 
-file = sys.argc[1]
-window = int(sys.argv[2])
-entropy_threshold = float(sys.argv[3])
+file = sys.argv[1]
+window = int(arg.w)
+entropy_threshold = float(arg.t)
+
+#first we need to set up 
+parser = argparse.ArgumentParser(description = 'Entropy Calculator')
+parser.add_argument('file', type=str, metavar='<path>', help='need fasta file')#this is our argument that is always going to be true
+parser.add_argument('-t', required=False, type=float, default= 1.4, metavar='<float>', help='need a value that is float [%(default).2f]')
+parser.add_argument('-w', required=False, type=int, default= 11, metavar='<int>', help='need a value that is an interger [%(default).i]')
+parser.add_argument('-s', required=False, action= 'store true' , , metavar='<float>', help='lowercase masking is OFF')
+arg = parser.parse_args()
+
+print(arg.s)
+print(arg.t, arg.w, arg.s)
+
 
 #first step would be to make the entropy calculator 
-def entropy(probability):
-	assert(math.isclose(1.0, sum(probability)))
-	h = 0
-	for prob in probability:
-		if prob != 0: h -= prob * math.log2(p)
-	return h
 
-#so we made just a regular entropy calculator but need to make one that does it for dna sequences
 def seq_entropy(seq):
 	A = seq.count('A')/len(seq)
 	T = seq.count('T')/len(seq)
 	G = seq.count('G')/len(seq)
 	C = seq.count('C')/len(seq)
-	return entropy([A, T, G, C])
-	
-for thing, seq in MCB185.read.fasta(sys.argv[1]):
-	seqX = list(seq)
-	for i in range(len(seq) - window + 1):
-		w = seq[i: i + w]
-		e = seq_entropy(w)	
-	seq =''.join(seqX)
-	print(seq)
+	sequence = sequence.upper()
+	sequence_list = list(sequence)
+	vals = [A, T, G, C]
+	h = 0
+	assert(math.isclose(1.0, sum(vals)))
+	for prob in vals:
+		if prob != 0: h -= prob * math.log2(p)
+	return h
+
+#so we made just a regular entropy calculator but need to make one that does it for dna sequences
+
+for name, sequence in mcb185.read_fasta(arg.s):
+	sequence_list = list(seq.upper())
+	for i in range(len(seq) - window +1):
+		if seq_entropy(sequence[i:i+window]) < entropy_threshold:
+			
+			
+print(seq_entropy(arg.s), arg.s)
+				
 
 
 
