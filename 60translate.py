@@ -16,6 +16,8 @@
 # Note: the ambituity is translated as X in the protein
 # Note: the stop codon is represented by *
 
+import mcb185
+
 gcode = {
 	'AAA' : 'K',	'AAC' : 'N',	'AAG' : 'K',	'AAT' : 'N',
 	'ACA' : 'T',	'ACC' : 'T',	'ACG' : 'T',	'ACT' : 'T',
@@ -56,7 +58,12 @@ cttgccccatcaaccatgaagatcaagatcatcgccccaccagagcgcaagtactccgtc\
 tggatcggaggatctatcctcgcttccctctccaccttccaacagatgtggatctccaag\
 caagaatacgacgagtccggcccatccatcgttcaccgcaagtgcttctaa\
 "
-
+# what we want to do is that we want to print out the translation of each code in each reading frame. 
+print("Frame #1:", mcb185.translate(actin_cds, 1)),
+print("Frame #2:", mcb185.translate(actin_cds, 2)),
+print("Frame #3", mcb185.translate(actin_cds, 3)),
+sep = "\n\n"
+		
 act_protein = "\
 MCDDEVAALVVDNGSGMCKAGFAGDDAPRAVFPSIVGRPRHQGVMVGMGQKDSYVGDEAQ\
 SKRGILTLKYPIEHGIVTNWDDMEKIWHHTFYNELRVAPEEHPVLLTEAPLNPKANREKM\
