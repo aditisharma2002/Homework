@@ -16,6 +16,7 @@ import sys
 import math
 import mcb185
 
+
 # The first thing I will do is define my variables
 file = sys.argv[1]
 window = int(sys.argv[2])
@@ -72,35 +73,7 @@ for position in range(0, len(new_sequence), 60): # we make a loop that repetitiv
 
 
 
-#file = sys.argc[1]
-#window = int(sys.argv[2])
-#entropy_threshold = float(sys.argv[3])
 
-#first step would be to make the entropy calculator 
-
-#def seq_entropy(seq):
-#	A = seq.count('A')/len(seq)
-#	T = seq.count('T')/len(seq)
-#	G = seq.count('G')/len(seq)
-#	C = seq.count('C')/len(seq)
-#	sequence = sequence.upper()
-#	sequence_list = list(sequence)
-#	vals = [A, T, G, C]
-#	h = 0
-#	assert(math.isclose(1.0, sum(vals)))
-#	for prob in vals:
-#		if prob != 0: h -= prob * math.log2(p)
-#	return h
-
-#so we made just a regular entropy calculator but need to make one that does it for dna sequences
-
-#for name, sequence in mcb185.read_fasta(arg.s):
-#	sequence_list = list(seq.upper())
-#	for i in range(len(seq) - window +1):
-#		if seq_entropy(sequence[i:i+window]) < entropy_threshold:
-			
-			
-#print(seq_entropy(arg.s), arg.s)
 
 
 
