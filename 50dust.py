@@ -15,15 +15,13 @@
 
 # Hint: make a smaller file for testing (e.g. e.coli.fna in the CLI below)
 
-import sys
+
 import math
 import mcb185
-import argparse #using parse makes the code more executable
-import random
+import argparse # this allows us to take inputs as arguments
+import random # use it to test random values
 
-file = sys.argv[1]
-window = int(arg.w)
-entropy_threshold = float(arg.t)
+
 
 #first we need to set up 
 parser = argparse.ArgumentParser(description = 'Entropy Calculator')
@@ -33,35 +31,54 @@ parser.add_argument('-w', required=False, type=int, default= 11, metavar='<int>'
 parser.add_argument('-s', required=False, action= 'store true' , , metavar='<float>', help='lowercase masking is OFF')
 arg = parser.parse_args()
 
-print(arg.s)
-print(arg.t, arg.w, arg.s)
+# calculating the entropy of the sequence
+def entropyequation(window):
+# we are going to first set up all the variables 
+	nucleotides = ['A', 'T', 'G', 'C']
+	H = 0 # where the entropy value will be put
+	nucleotide_count = [0]*4 # this is the amount of each nucleotide that is found in the sequence. 
+	nucleotide_probability = [] # this is the probability that that we find the nucleotides above in the sequence
 
-
-#first step would be to make the entropy calculator 
-
-def seq_entropy(seq):
-	A = seq.count('A')/len(seq)
-	T = seq.count('T')/len(seq)
-	G = seq.count('G')/len(seq)
-	C = seq.count('C')/len(seq)
-	sequence = sequence.upper()
-	sequence_list = list(sequence)
-	vals = [A, T, G, C]
-	h = 0
-	assert(math.isclose(1.0, sum(vals)))
-	for prob in vals:
-		if prob != 0: h -= prob * math.log2(p)
-	return h
-
-#so we made just a regular entropy calculator but need to make one that does it for dna sequences
-
-for name, sequence in mcb185.read_fasta(arg.s):
-	sequence_list = list(seq.upper())
-	for i in range(len(seq) - window +1):
-		if seq_entropy(sequence[i:i+window]) < entropy_threshold:
+	for nucleotide in window: 
+		if nucleotide in nucleotides:
+			nucleotide_counts[nucleotides.index(nucleotide)] += 1
+	for count in nucleotide_counts:
+		nucleotide_probability.append(count/len(window))
+	for probability in nucleotide_probabilties: # this is the entropy equation that we use with the probabilities
+		if probability != 0:
+			H -= probability * math.log2(probabilty)
 			
+	return H 
+
+# Now we are going to filter 
+def entropy_filter(seq, window_len)
+	window = seq[:window_len.upper()]
+	fil_seq = seq.upper() # this copies the entire sequence and makes it uppercase
+	
+	for position in range(len(seq)):
+		if position in range(len(seq) - window_len + 1): 
+			if position != 0: # checking if it is in the range
+				window = (window[1:]+ seq[pos + window_length - 1]).upper()
+			H = entropyequation(window)
 			
-print(seq_entropy(arg.s), arg.s)
+			if H < arg.t and arg.s == True:	
+				fil_seq = fil_seq.replace(fil_seq[pos:pos + window_len], fil_seq[pos:pos + window_len].lower())
+			elif H < arg.t and arg.s == False:
+				fil_seq = fil_seq.replace(fil_seq[pos:pos + window_len], 'N'* window_len)
+		if (pos + 1) % 60 == 0: # this is going to print the nucleotides in 60 per row
+			yield(fil_seq[pos - 59: pos + 1])
+	if len(seq) % 60 == 0: # this prints out the rest of the nucleotides in the sequence
+		yield(fil_seq[len(seq) - (len(seq) % 60:)])
+
+for row in mcb185.read_fasta(arg.file): # open and read the file
+	print('>' + line[0]) # description
+	for seq in line[1:]: # this is the filtered sequence that we want
+		for row in entropy_filter(seq, arg.w):
+			print(row)
+
+
+
+
 				
 
 
