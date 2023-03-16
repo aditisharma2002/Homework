@@ -13,6 +13,7 @@
 # Hint: you can read a file twice, first to get the DNA, then the CDS
 # Hint: check your CDS by examining the source protein
 
+
 import mcb185
 import re
 import sys
@@ -21,11 +22,12 @@ import gzip
 filename = sys.argv[1]
 seq = '' # creating an empty variable so that the sequence can go in here later.
 # the code below is used to extract the DNA sequence and put it into the variable seq
+
 with gzip.open(filename, 'rt') as fp: # the file is opened and read in a text format
-	for line in fp: 3 use this for loop to find the ORIGIN 
+	for line in fp: #use this for loop to find the ORIGIN 
 		if line.startswith('ORIGIN'):
 			break
-	for line in fp.readlines(): read the line and the split it to make a word list and join back together
+	for line in fp.readlines():  #read the line and the split it to make a word list and join back together
 		f = line.split()
 		seq += ''.join(f[1:]) # this is the sequence that is going into the seq variable
 seq = seq.upper() # we want the value in the seq variable to be Uppercase
@@ -39,18 +41,17 @@ with gzip.open(filename, 'rt') as fp: # this opens the gzip file and reads
 			beginning = int(coordinates.group(1)) # extracts beginning
 			end = int(coordinates.group(2)) # extracts end
 			if 'complement' in line:
-				startcoor = mcb185.anti(seq[end - 3: end]) # if the line containt the complement, then program will analyze the reverse seqeuence
+				start_coor = mcb185.anti(seq[end - 3: end]) # if the line containt the complement, then program will analyze the reverse seqeuence
 			else: # if not then we get the sequence from the seq 
-				startcoor = seq[beginning - 1: beginning + 2]
-			if startcoor not in startcoors: 
-				startcoors[startcoor] = 0
-			startcoors[startcoor] += 1
+				start_coor = seq[beginning - 1: beginning + 2]
+			if start_coor not in startcoors: 
+				start_coors[start_coor] = 0
+			start_coors[start_coor] += 1
 # prints results			
-for startcoor in startcoors:
-	print(startcoor, startcoors[startcoor])
+for start_coor in start_coors:
+	print(start_coor, start_coors[start_coor])
 
-
-
+# i am getting no output????
 
 """
 python3 63canonical.py ~/DATA/E.coli/GCF_000005845.2_ASM584v2_genomic.gbff.gz
