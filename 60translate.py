@@ -59,10 +59,8 @@ tggatcggaggatctatcctcgcttccctctccaccttccaacagatgtggatctccaag\
 caagaatacgacgagtccggcccatccatcgttcaccgcaagtgcttctaa\
 "
 # what we want to do is that we want to print out the translation of each code in each reading frame. 
-print("Frame #1:", mcb185.translate(actin_cds, 1)),
-print("Frame #2:", mcb185.translate(actin_cds, 2)),
-print("Frame #3", mcb185.translate(actin_cds, 3)),
-sep = "\n\n"
+seq = actin_cds.upper() # want it to be turned into upper case because gcode is uppercase
+print(mcb185.translate(seq))
 		
 act_protein = "\
 MCDDEVAALVVDNGSGMCKAGFAGDDAPRAVFPSIVGRPRHQGVMVGMGQKDSYVGDEAQ\
