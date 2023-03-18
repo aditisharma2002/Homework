@@ -12,24 +12,23 @@ import argparse
 import mcb185
 
 parser = argparse.ArgumentParser(description='Kmer counts in fasta file')
-parser.add_argument('file, type=str, metavar='<path>', help='fasta file')
+parser.add_argument('file', type=str, metavar='<path>', help='Fasta file')
 parser.add_argument('k', type=int, metavar='<int>', help='size of kmer')
 arg = parser.parse_args()
 
 kmers = {} #We are creating an empty dictionary called kmers so that we can store values in it later.
 
-for line in mcb185.read_fasta(arg.file):
-	for seq in line[1:]: # we want to make sure that we read only the sequence not the description
-		for pos in range(len(seq)-arg.k+1): # we need the window to move over
-			kmer = seq[pos:pos+arg.k]
-			if kmer not in kmers: # counts the kmers
-				kmers[kmer]= 1
-			else:
-				kmers[kmer] += 1
-#prints results
-for kmer in sorted(kmers):
-	print(kmer,kmers[kmer])
+for name, seq in mcb185.read_fasta(arg.file):
+    for pos in range(len(seq)-arg.k+1):  # we need the window to move over
+        kmer = seq[pos:pos+arg.k]
+        if kmer not in kmers:
+            kmers[kmer] = 1
+        else:
+            kmers[kmer] += 1
 
+for kmer in sorted(kmers):
+    print(kmer, kmers[kmer])
+#got rid of the unecessary for loop and the code is working 
 
 """
 python3 60kmers.py ~/DATA/E.coli/GCF_000005845.2_ASM584v2_genomic.fna.gz 2

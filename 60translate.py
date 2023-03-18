@@ -61,7 +61,9 @@ caagaatacgacgagtccggcccatccatcgttcaccgcaagtgcttctaa\
 # what we want to do is that we want to print out the translation of each code in each reading frame. 
 seq = actin_cds.upper() # want it to be turned into upper case because gcode is uppercase
 print(mcb185.translate(seq))
-		
+
+#fixed format and code is working
+
 act_protein = "\
 MCDDEVAALVVDNGSGMCKAGFAGDDAPRAVFPSIVGRPRHQGVMVGMGQKDSYVGDEAQ\
 SKRGILTLKYPIEHGIVTNWDDMEKIWHHTFYNELRVAPEEHPVLLTEAPLNPKANREKM\
