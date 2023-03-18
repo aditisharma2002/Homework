@@ -34,7 +34,7 @@ def entropy(probs):
 		if p != 0: h -= p * math.log2(p)
 	return h # here we get out entropy
 	
-def seq_entropy(seq):
+def entropy_sequence(seq):
 	A = seq.count('A')/len(seq)
 	C = seq.count('C')/len(seq)
 	G = seq.count('G')/len(seq)
