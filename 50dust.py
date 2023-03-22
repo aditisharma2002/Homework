@@ -28,31 +28,31 @@ parser.add_argument('-s', required=False, action='store_true', help='lowercase m
 args = parser.parse_args()
 
 def entropy(probs):
-	assert(math.isclose(1.0, sum(probs))) #check sum of the probabilities
-	h = 0
-	for p in probs:
-		if p != 0: h -= p * math.log2(p)
+	assert(math.isclose(1.0, sum(probs))) #check if sum of the probabilities is close to 1
+	h = 0 # telling program that h = 0
+	for p in probs: # loop that goes over each probability value
+		if p != 0: h -= p * math.log2(p) # calculates entropy
 	return h # here we get out entropy
 	
-def entropy_sequence(seq):
-	A = seq.count('A')/len(seq)
+def entropy_sequence(seq): # calculates entropy of DNA sequence
+	A = seq.count('A')/len(seq) # frequency of A in sequence divided by length
 	C = seq.count('C')/len(seq)
 	G = seq.count('G')/len(seq)
 	T = seq.count('T')/len(seq)
-	return entropy([A, C, G, T])
+	return entropy([A, C, G, T]) # tells us the entropy of sequence
 
 for name, seq in mcb185.read_fasta(sys.argv[1]):
 	seq = seq.upper() # convert the sequence to uppercase
-	seq1 = list(seq)
+	seq1 = list(seq) # new list with same stuff as old list seq
 	for i in range(len(seq) - arg.w + 1):
-		win = seq[i: i + arg.w]
-		if seq_entropy(win) < arg.t:
+		win = seq[i: i + arg.w] # window length  arg.w starting at i
+		if seq_entropy(win) < arg.t: # we are checking if the entropy of the window is less tahn the threshold
 			for j in range(i, i + arg.w):
 				if arg.lowercase: seq1[j] = seq[j].lower()
 				else: seq1[j] = 'N'
-	seq = ''.join(seq1)
+	seq = ''.join(seq1) # join seq1 and seq by putting everything from seq1 into seq
 	print(f'>{name}')
-	for i in range(0, len(seq), 60):
+	for i in range(0, len(seq), 60): #loops through sequence in 60
 		print(seq[i: i + 60]) # printed in 60 characters each time
 		
 		
