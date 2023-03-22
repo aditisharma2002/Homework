@@ -21,7 +21,7 @@ import re
 filename = sys.argv[1]
 
 # grabbing the sequence
-seq = '' # make empty variable so that the information can be put in here later.
+seq = ''
 
 with gzip.open(filename, 'rt') as fp:
 	for line in fp:
@@ -50,6 +50,9 @@ with gzip.open(filename, 'rt') as fp:
 
 for startc in startcs:
 	print(startc, startcs[startc])
+
+	
+# the output worked and I got what it says below. 
 """
 python3 63canonical.py ~/DATA/E.coli/GCF_000005845.2_ASM584v2_genomic.gbff.gz
 ATG 3883
