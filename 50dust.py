@@ -28,13 +28,13 @@ parser.add_argument('-s', required=False, action='store_true', help='lowercase m
 args = parser.parse_args()
 
 def entropy(probs):
-	assert(math.isclose(1.0, sum(probs))) #check if sum of the probabilities is close to 1
-	h = 0 # telling program that h = 0
+	assert(math.isclose(1.0, sum(probs)))#check if sum of the probabilities is close to 1
+	h = 0
 	for p in probs: # loop that goes over each probability value
 		if p != 0: h -= p * math.log2(p) # calculates entropy
 	return h # here we get out entropy
 	
-def entropy_sequence(seq): # calculates entropy of DNA sequence
+def seq_entropy(seq): # calculates entropy of DNA sequence
 	A = seq.count('A')/len(seq) # frequency of A in sequence divided by length
 	C = seq.count('C')/len(seq)
 	G = seq.count('G')/len(seq)
@@ -50,12 +50,10 @@ for name, seq in mcb185.read_fasta(sys.argv[1]):
 			for j in range(i, i + arg.w):
 				if arg.lowercase: seq1[j] = seq[j].lower()
 				else: seq1[j] = 'N'
-	seq = ''.join(seq1) # join seq1 and seq by putting everything from seq1 into seq
+	seq = ''.join(seq1)# join seq1 and seq by putting everything from seq1 into seq
 	print(f'>{name}')
 	for i in range(0, len(seq), 60): #loops through sequence in 60
-		print(seq[i: i + 60]) # printed in 60 characters each time
-		
-		
+		print(seq[i: i + 60])	# printed in 60 characters each time
 """
 python3 50dust.py -w 11 -t 1.4 -s e.coli.fna  | head
 >NC_000913.3 Escherichia coli str. K-12 substr. MG1655, complete genome
