@@ -33,14 +33,14 @@ with gzip.open(filename, 'rt') as fp:
 seq = seq.upper()
 
 # finding the coordinates
-startcs = {}
-with gzip.open(filename, 'rt') as fp:
-	for line in fp.readlines():
-		if line.startswith('     CDS'):
+startcs = {} # make an empty variable
+with gzip.open(filename, 'rt') as fp: # open file as text 
+	for line in fp.readlines(): # for loop that reads the file 
+		if line.startswith('     CDS'): # check if the line starts with ORIGIN
 			coordinates = re.search('(\d+)\.\.(\d+)', line)
 			beg = int(coordinates.group(1))
 			end = int(coordinates.group(2))
-			if 'complement' in line:
+			if 'complement' in line: # checks to see if CDS is present
 				startc = mcb185.anti(seq[end - 3: end])
 			else:
 				startc = seq[beg - 1: beg + 2]
@@ -49,7 +49,7 @@ with gzip.open(filename, 'rt') as fp:
 			startcs[startc] += 1
 
 for startc in startcs:
-	print(startc, startcs[startc])
+	print(startc, startcs[startc]) # prints the startc nucleotides and the value of the frequency
 
 	
 # the output worked and I got what it says below. 
